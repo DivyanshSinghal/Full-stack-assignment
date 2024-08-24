@@ -54,21 +54,19 @@ MONGO_URI=mongodb://localhost:27017/melodyverse_db  # Replace with your MongoDB 
 JWT_SECRET=your_jwt_secret_key                      # Replace with your JWT secret key
 Start MongoDB: Ensure your MongoDB server is running. You can start it using the following command if you installed MongoDB locally:
 
-bash
-Copy code
-mongod
+
 Running the Application
 Start the backend server:
 
 bash
-Copy code
+
 npm start
 The backend server will start at http://localhost:5000.
 
 Start the frontend server (if applicable): Navigate to the frontend directory and run:
 
 bash
-Copy code
+
 npm start
 The frontend server will start at http://localhost:3000.
 
@@ -80,7 +78,7 @@ URL: POST /api/auth/signup
 Description: Registers a new user.
 Request Body:
 json
-Copy code
+
 {
   "username": "testuser",
   "email": "testuser@example.com",
@@ -92,7 +90,7 @@ URL: POST /api/auth/login
 Description: Authenticates a user and returns a JWT token.
 Request Body:
 json
-Copy code
+
 {
   "email": "testuser@example.com",
   "password": "password123"
@@ -103,7 +101,7 @@ URL: POST /api/auth/forgot-password
 Description: Sends a password reset email to the user.
 Request Body:
 json
-Copy code
+
 {
   "email": "testuser@example.com"
 }
@@ -113,7 +111,7 @@ URL: POST /api/auth/reset-password/:token
 Description: Resets the user's password.
 Request Body:
 json
-Copy code
+
 {
   "newPassword": "newpassword123"
 }
@@ -123,5 +121,104 @@ Ensure the UI/UX is functioning as expected by interacting with the application 
 Backend
 Use Postman or cURL to test the various API endpoints listed above.
 Ensure that user registration, login, and password reset workflows are functioning correctly.
-License
-This project is licensed under the MIT License. See the LICENSE file for more details.
+
+Instructions to install and use:
+
+o run and test the API, follow these steps:
+1. Install Required Software
+• Node.js: Ensure you have Node.js installed. You can download it from here.
+• MongoDB: Make sure MongoDB is installed and running on your system. You can download 
+it from here.
+2. Set Up the Project
+• Clone the Repository: If your project is in a version control system like Git, clone it using:
+bash
+git clone <repository-url>
+cd <repository-folder>
+Since, it is in the zip folder so you can directly copy it from there
+• Install Dependencies: Run the following command in the project directory to install all 
+required Node.js packages:
+bash
+npm install
+3. Set Up Environment Variables
+• Create .env File: In the root of your project, create a .env file.
+• Add the following variables:
+env
+MONGO_URI=mongodb://localhost:27017/melodyverse_db # Replace with your MongoDB URI
+JWT_SECRET=your_jwt_secret_key # Replace with your JWT secret key
+4. Run the API
+• Start the server using the following command:
+bash
+npm start
+• The server should now be running on http://localhost:5000.
+5. Test the API
+You can test the API using tools like Postman or cURL.
+5.1 Signup API
+• Endpoint: POST http://localhost:5000/api/auth/signup
+• Request Body:
+json
+{
+ "username": "testuser",
+ "email": "testuser@example.com",
+ "password": "password123"
+}
+• Expected Response:
+json
+{
+ "message": "User registered successfully"
+}
+5.2 Login API
+• Endpoint: POST http://localhost:5000/api/auth/login
+• Request Body:
+json
+Copy code
+{
+ "email": "testuser@example.com",
+ "password": "password123"
+}
+• Expected Response:
+json
+{
+ "token": "<your-jwt-token>"
+}
+5.3 Password Reset API
+• Forgot Password
+o Endpoint: POST http://localhost:5000/api/auth/forgot-password
+o Request Body:
+json
+{
+ "email": "testuser@example.com"
+}
+o Expected Response:
+json
+{
+ "message": "Password reset email sent"
+}
+• Reset Password
+o Endpoint: POST http://localhost:5000/api/auth/reset-password/:token
+o Request Body:
+json
+{
+ "newPassword": "newpassword123"
+}
+o Expected Response:
+json
+{
+ "message": "Password reset successfully"
+}
+6. Check MongoDB Database
+• You can verify that users are being created in your MongoDB database by connecting to your 
+database and checking the users collection.
+7. Frontend Testing
+• Ensure that the frontend interacts with the backend by testing the signup, login, and 
+password reset functionalities through the user interface.
+8. Troubleshooting
+• Common Issues:
+o Port Already in Use: If you see an error about the port being in use, either stop the 
+other process or change the port in your server.js file.
+o Database Connection Error: Ensure that your MongoDB server is running and that 
+the MONGO_URI is correct.
+9. Deployment
+• Local: You can continue testing on your local machine.
+• Production: To deploy, consider services like Heroku, AWS, or DigitalOcean, and make sure to 
+set environment variables securely in production environments.
+These steps should guide you through running and testing API locally.
